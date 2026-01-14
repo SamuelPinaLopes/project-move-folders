@@ -36,12 +36,5 @@ print(get_folders(flag_and_directory["directories"]))
 print(get_destination(flag_and_directory["directories"]))
 
 # move the folder to where you wanted
-# for folder_move in get_folders(sys.argv[1:]):
-    # shutil.move(os.getcwd() + folder_move, destination)
-
-"""
-
- It is recommended to handle potential exceptions such as FileNotFoundError or PermissionError using try-except blocks, especially when dealing with file operations that depend on system access rights.
- Additionally, ensure the destination directory exists or is correctly specified to avoid errors during the move operation.
-
-"""
+for folder_move in get_folders(sys.argv[1:]):
+    shutil.move(os.getcwd() + '/' + folder_move, destination)
