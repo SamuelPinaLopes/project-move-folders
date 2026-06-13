@@ -31,10 +31,6 @@ destination = get_destination(flag_and_directory["directories"])
 # flags you have
 flags = flag_and_directory["flags"]
 
-
-print(get_folders(flag_and_directory["directories"]))
-print(get_destination(flag_and_directory["directories"]))
-
 # move the folder to where you wanted
 for folder_move in get_folders(sys.argv[1:]):
     shutil.move(os.getcwd() + '/' + folder_move, destination)

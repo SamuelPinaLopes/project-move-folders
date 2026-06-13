@@ -1,0 +1,10 @@
+I'm very new to neovim and have been going through the tutorial, but I want to create a s
+mall text file that I can practice on but idk how to open an existing file or save a 
+file. I know the help menu is very useful, but i don't think that I always search for 
+the right thing. Any help is appreciated!
+
+
+I open a file within neovim!
+
+
+

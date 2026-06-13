@@ -1,0 +1,58 @@
+
+SYNTAX:
+- first put the parameters;
+- file destination;
+- put the name of all folders you want to move in -> "" at the end of the command/sentence.
+
+
+It is recommended to handle potential exceptions such as FileNotFoundError or PermissionError using try-except blocks, especially when dealing with file operations that depend on system access rights.
+Additionally, ensure the destination directory exists or is correctly specified to avoid errors during the move operation.
+Syntax: shutil.move(source, destination)
+source: Path to the folder you want to move (string or pathlib.Path).
+destination: Target directory path where the folder should be moved.
+Behavior:
+If the destination is an existing directory, the source folder is moved inside it.
+If the destination does not exist, the folder is moved and renamed to the destination name.
+Any non-existent intermediate directories in the destination path are created automatically.
+
+Return Value: The function returns the new path of the moved folde
+
+# what to do more
+# write the program receive more than one folder in one time.
+# write the program (with parameters) that stores and enumerates the default locations.
+# show the files being moved with an little animation in command prompt.
+# how to use like a command?
+
+
+
+how to transform it into a bash command?
+
+1. Criando Aliases (Atalhos)
+Ideal para simplificar comandos longos ou combinações frequentes. 
+
+Edite o arquivo de configuração do Bash:
+nano ~/.bashrc
+
+Adicione a linha no final do arquivo, substituindo nomedoalias e o comando desejado:
+alias nomedoalias='comando_real --opcoes'
+
+Salve e recarregue a configuração:
+source ~/.bashrc
+
+Nota: Para tornar permanente para todos os usuários, edite /etc/profile. 
+2. Criando Scripts Executáveis
+Ideal para automatizar tarefas complexas ou múltiplos comandos. 
+
+Crie um arquivo com a extensão .sh:
+nano meu_comando.sh
+
+Adicione o shebang na primeira linha e seus comandos abaixo:
+#!/bin/bash
+echo "Executando tarefa..."
+ls -la
+
+Torne o arquivo executável:
+chmod +x meu_comando.sh
+
+Para usá-lo como um comando global, mova-o para um diretório na variável de ambiente $PATH (como /usr/local/bin/) ou adicione o diretório do script ao $PATH editando o ~/.bashrc:
+export PATH=$PATH:/caminho/do/seu/diretorio
