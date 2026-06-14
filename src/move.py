@@ -1,3 +1,4 @@
+import argparse
 import sys
 import shutil
 import os
@@ -22,19 +23,24 @@ def separate_it(argments): # separates flags and directories
     return {"flags": flags, "directories": directory} # returns a dictionary
 
 
-# separate flags and directories
-flag_and_directory = separate_it(sys.argv[1:])
+parse = argparse.ArgumentParser(description="Command to copy several folders at once.", usage="command + flags + destination + folders to move")
+parse.add_argument("-v", "--verbose", action="store_true", help="see what is going on while moving")
+parse.add_argument("foldername", nargs="+", help="input folders")
+parse.add_argument("destination", help="input folders destination")
 
-# where to move
-destination = get_destination(flag_and_directory["directories"]) # list output
 
-# folders to move
-folders = get_folders(flag_and_directory["directories"])
+print(parse.parse_args().foldername)
+print(parse.parse_args().destination)
 
-# gets the flags you have
-flags = flag_and_directory["flags"] # list output
 
-# move the folder to where you wanted
-for folder_move in folders: # for each folder you've got
-    path = os.getcwd() + '/' + folder_move # path of current folder to move
-    shutil.move(path, destination) # move from current directory to destination
+
+
+
+
+
+
+# # move the folder to where you wanted
+# for folder_move in folders: # for each folder you've got
+    # path = os.getcwd() + '/' + folder_move # path of current folder to move
+    # shutil.move(path, destination) # move from current directory to destination
+
