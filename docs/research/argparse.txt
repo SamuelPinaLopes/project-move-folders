@@ -1,0 +1,84 @@
+parsing library:
+   - what it is?
+   - how to use it, basics;
+
+what is it?
+Parsing means taking text and turning it into structured data your program can use.
+In plain terms: you read a string like "42" or "--name Alice" and convert it into
+numbers, words, or command options.
+
+things it can do:
+   - It handles flags, options, and arguments
+   - It gives help text automatically
+   - It validates types (int, float, str)
+
+
+how to get things out of it?
+create a variable of type argparse.
+Example:
+   pareser = argparse.ArgumentParser(description=)
+
+after adding your arguments, you can access them using
+the variable name and the name you gave before to arguments.
+Example:
+   import argparse
+
+   parser = argparse.ArgumentParser()
+   parser.add_argument("src", help="source folder")
+   parser.add_argument("dest", help="destination folder")
+   parser.add_argument("--verbose", action="store_true")
+
+   args = parser.parse_args()
+
+   print(args.src)
+   print(args.dest)
+   print(args.verbose)
+
+So the key is: use args.<name> after args = parser.parse_args()!
+
+EXPLANATIONS:
+What is parser.parse_args()?
+is the moment Python actually looks at what you typed in the terminal and grabs the data.
+
+parser: This is the "form" you built with all your rules.
+
+.parse_args(): This is the action. It tells Python, "Go read the terminal right now, check what the user typed against my rules, and extract the actual text."
+
+args = : This takes all that extracted, organized data and saves it into a neat little package called args so you can use it in the rest of your code.
+
+
+What do you have to put inside args variable to have access?
+Rule 1: For Positional Arguments (No dashes)
+This is the simplest one. Whatever string you put in add_argument(), that is exactly what you type after args..
+
+In code: parser.add_argument('dest')
+
+How you use it: args.dest
+
+Rule 2: For Flags (With dashes)
+When you use flags like -d or --dest, Python strips away the dashes. If you provide both a short name and a long name, Python will always prefer the long name.
+
+In code: parser.add_argument('-d', '--dest')
+
+How you use it: args.dest (Python drops the -- and ignores the -d).
+
+Rule 3: The "Dash-to-Underscore" Magic (Very Important!)
+In your very first question, you mentioned a flag called folders-to.
+
+In Python, you can't have a variable with a hyphen in it (Python will think you're trying to subtract two numbers!). So, argparse automatically converts hyphens (-) into underscores (_).
+
+In code: parser.add_argument('--folders-to')
+
+How you use it: args.folders_to
+
+
+
+
+
+
+
+
+
+important arguments when creating an argument:
+- required (bool)
+- narg (string)
