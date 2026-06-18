@@ -36,6 +36,23 @@ Example:
 
 So the key is: use args.<name> after args = parser.parse_args()!
 
+Options for action="":
+ - store_true
+ - append
+ - store
+ - store_const
+ - append_const
+ - count
+ - help
+ - version
+
+
+
+
+
+
+
+
 EXPLANATIONS:
 What is parser.parse_args()?
 is the moment Python actually looks at what you typed in the terminal and grabs the data.
@@ -82,3 +99,4 @@ How you use it: args.folders_to
 important arguments when creating an argument:
 - required (bool)
 - narg (string)
+
