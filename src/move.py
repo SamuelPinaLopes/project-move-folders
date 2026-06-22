@@ -1,4 +1,6 @@
 import argparse
+import os
+import shutil
 
 inputs = argparse.ArgumentParser(description="Command to move several folders to required destination at once.\n")
 
@@ -8,45 +10,10 @@ inputs.add_argument("folders", nargs="+", help="Input the folders you want to mo
 # flags
 inputs.add_argument("-v", "--verbose", help="See moving folders process working.")
 inputs.add_argument("-sf", "--sub-folders", help="Move just subfolders inside folders you passed.")
-inputs.add_argument("-f", "--files", help="")
-
-import sys
-import shutil
-import os
-
-# function of the program
-def get_destination(argments):
-    return argments[0] # destination has to be always the first element in dictionary (you'll recieve one list here)
-
-def get_folders(argments):
-    return argments[-1].split(" ") # get the last list with folders and split it. 
-
-def separate_it(argments): # separates flags and directories 
-    flags = list() # list of flags
-    directory = list() # list of directories (both, destination and path)
-
-    for anything in argments: # does that
-        if anything[0] == "-": # checks if it is a flag appends it in flag else appends it in directory
-            flags.append(anything)
-        else:
-            directory.append(anything)
-
-    return {"flags": flags, "directories": directory} # returns a dictionary
-
-
-# separate flags and directories
-flag_and_directory = separate_it(sys.argv[1:])
-
-# where to move
-destination = get_destination(flag_and_directory["directories"]) # list output
-
-# folders to move
-folders = get_folders(flag_and_directory["directories"])
-
-# gets the flags you have
-flags = flag_and_directory["flags"] # list output
-
+inputs.add_argument("-f", "--files", help="Move just files from that folders.")
+# actually running it
+ins = inputs.parse_args()
 # move the folder to where you wanted
-for folder_move in folders: # for each folder you've got
+for folder_move in ins.folders: # for each folder you've got
     path = os.getcwd() + '/' + folder_move # path of current folder to move
-    shutil.move(path, destination) # move from current directory to destination
+    shutil.move(path, ins.dest) # move from current directory to destination
