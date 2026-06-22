@@ -1,9 +1,10 @@
 import argparse
-import os
-import shutil
+from os import getcwd
+from shutil import move
+from functions import check_path
 
-inputs = argparse.ArgumentParser(description="Command to move several folders to required destination at once.\n")
-
+# catch parameters passed
+inputs = argparse.ArgumentParser(description="Command to move several folders to required destination at once.\nThis command is already recursive, so it doesn't have any recursive flag and won't have.")
 # folders and destination
 inputs.add_argument("dest", help="Destination for all folders.")
 inputs.add_argument("folders", nargs="+", help="Input the folders you want to move.")
@@ -13,7 +14,15 @@ inputs.add_argument("-sf", "--sub-folders", help="Move just subfolders inside fo
 inputs.add_argument("-f", "--files", help="Move just files from that folders.")
 # actually running it
 ins = inputs.parse_args()
-# move the folder to where you wanted
-for folder_move in ins.folders: # for each folder you've got
-    path = os.getcwd() + '/' + folder_move # path of current folder to move
-    shutil.move(path, ins.dest) # move from current directory to destination
+
+# output from check path
+outpath = check_path(path=ins.dest, folders=ins.folders)
+# show error if something is wrong
+if outpath['work'] == False:
+    print(f"Error: source folder doesn't exist!\nFolder missing: {outpath['value']}")
+# move folders if allright 
+else:
+    # move the folder to where you wanted
+    for folder_move in ins.folders: # for each folder you've got
+        path = getcwd() + '/' + folder_move # path of current folder to move
+        move(path, ins.dest) # move from current directory to destination

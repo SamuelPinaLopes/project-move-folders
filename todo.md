@@ -7,14 +7,14 @@ Things to add!
 
 argparse / proper CLI parsing
 
-replace manual sys.argv parsing
-support --help
-support flags like -v, -r, --dry-run
+replace manual sys.argv parsing ✅
+support --help ✅
+support flags like -v, -r, --dry-run ✅
 
 error handling
 
-detect missing destination or folders
-check if source folder exists
+detect missing destination or folders ✅
+check if source folder exists ✅
 check if destination exists and is writable
 catch shutil.move failures and report them
 

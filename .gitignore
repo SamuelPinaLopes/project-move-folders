@@ -2,3 +2,4 @@ test*
 *.env
 *.log
 notes.txt
+__pycache__
