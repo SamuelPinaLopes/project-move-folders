@@ -1,0 +1,25 @@
+In Linux, a file is split into two parts:
+
+The Data: The actual content (your code, an image, text) stored in a specific locker on your hard drive. This locker has a unique ID number called an inode.
+
+The Name: The filename you see in your folder. The filename is just a label pointing to that inode locker.
+
+
+
+1. Symbolic Link (Symlink)
+A symbolic link is a shortcut. It is a completely separate, tiny file that contains nothing but the text path of another file. It points to the name of the original file, not the data locker.
+
+The Analogy: Think of a symlink like a signpost on a road that says, "The museum is 2 miles down that way." * What happens if you delete the original file? The symlink breaks. If the museum is demolished, the signpost is still standing, but it points to an empty lot. In Linux, this is called a broken link.
+
+What happens if you delete the symlink? Nothing happens to the original file. You just removed the signpost.
+
+
+
+2. Hard Link
+A hard link is a mirror label. It creates a brand-new filename that points directly to the exact same inode locker as the original file. To Linux, both names are completely equal owners of the data.
+
+The Analogy: Imagine a house with two different doors—a front door and a back door. Both doors let you enter the exact same physical house.
+
+What happens if you delete the original file? The data is not deleted! Because a hard link points directly to the inode locker, the data stays alive as long as at least one name is still pointing to it. If you delete the original file, you just closed the front door. You can still access the house through the back door (the hard link).
+
+When does the data actually get deleted? Only when all hard links (every single door to the house) are deleted.

@@ -1,7 +1,9 @@
+#! /usr/bin/env python3
+
 import argparse
 from os import getcwd
 from shutil import move
-from functions import check_path
+from movepy_functions import check_path
 
 # catch parameters passed
 inputs = argparse.ArgumentParser(description="Command to move several folders to required destination at once.\nThis command is already recursive, so it doesn't have any recursive flag and won't have.")
@@ -15,9 +17,9 @@ inputs.add_argument("-f", "--files", help="Move just files from that folders.")
 # actually running it
 ins = inputs.parse_args()
 
-# output from check path
+# checks if the path exists
 outpath = check_path(path=ins.dest, folders=ins.folders)
-# show error if something is wrong
+# shows an error if some path is missing or wrong
 if outpath['work'] == False:
     print(f"Error: source folder doesn't exist!\nFolder missing: {outpath['value']}")
 # move folders if allright 

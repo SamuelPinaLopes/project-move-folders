@@ -1,0 +1,13 @@
+How to transform your program into a command line program???
+
+to do that you have to first tell how the shell/kernel will understand that file or actually
+run it, in this case you just have to say that have to use python.
+
+use chomd command to change it's mode to executable, usually linux treat all files as read and
+write files, but in this case, you need it to run. give it permission to run with +x, that means
++ = add and x = executable file.
+
+add it to global path environment for bash be able to know where the code is to run it.
+you have to put the file (for global envirnment path work) inside ~/.local/bin/ folder.
+
+add the global path environment to .bashrc or .zshrc file.

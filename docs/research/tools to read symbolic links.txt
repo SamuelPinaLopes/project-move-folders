@@ -1,0 +1,3 @@
+1 - ls -l path to your symbolic link
+2 - readlink path to your symbolic link
+3 - file path to your symbolic link
